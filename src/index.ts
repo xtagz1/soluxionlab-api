@@ -10,11 +10,12 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json()); // Enable JSON body parsing
 
+app.use('/', routes)
+
 app.get('/', (req: Request, res: Response) => {
     res.send('Express + TypeScript + Prisma Server');
 });
 
-app.get('/search', TodoController.fetch)
 
 
 app.listen(port, () => {
