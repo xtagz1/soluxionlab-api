@@ -1,7 +1,8 @@
-// src/index.ts
 import express, { Express, Request, Response } from 'express';
-// import { PrismaClient } from '@prisma/client';
 import { PrismaClient } from '../generated/prisma'
+import routes from './routes/index'
+import { TodoController } from './controller/todo.controller';
+
 
 const app: Express = express();
 const prisma = new PrismaClient();
@@ -12,6 +13,8 @@ app.use(express.json()); // Enable JSON body parsing
 app.get('/', (req: Request, res: Response) => {
     res.send('Express + TypeScript + Prisma Server');
 });
+
+app.get('/search', TodoController.fetch)
 
 
 app.listen(port, () => {
