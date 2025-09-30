@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: eior
+    environment:
+      POSTGRES_USER: eior
+      POSTGRES_PASSWORD: eior
+      POSTGRES_DB: eior
+    ports:
+      - '5435:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
